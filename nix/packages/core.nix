@@ -14,10 +14,12 @@ with pkgs; [
   gh # github cli and authentiaction
   htop # system monitor
   jq # json querying
+  lsd # improved colorful ls
   ncdu # disk usage viewer
   neovim # editor
   nushell # shell
   ripgrep # better grep
+  sd # find & replace replacement
   sesh # tmux session manager
   starship # line
   tmux # multiplexer

@@ -65,7 +65,7 @@
             cargoLock.lockFile = "${inputs.home-pi-api}/Cargo.lock";
           };
         };
-        aarch64-darwin.default = makePackages "aarch64-darwin" ./packages/darwin.nix;
+        aarch64-darwin.default = makePackages "aarch64-darwin.darwin" ./packages/darwin.nix;
       };
 
       formatter =

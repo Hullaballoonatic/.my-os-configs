@@ -40,45 +40,21 @@ ensure_nix() {
 }
 
 darwin() {
-  ensure_nix
-
-  log "Installing packages"
-  nix profile install "$REPO_DIR/nix#darwin"
-}
-
-macos() {
-  local formulae=(
-    atuin
-    bat
-    carapace
-    fnm
-    htop
-    neovim
-    nushell
-    pyenv
-    sesh
-    starship
-    stow
-    topgrade
-    tree-sitter-cli
-    yazi
-    zoxide
-  )
-
   local casks=(
     ghostty
   )
 
-  has brew || abort "Homebrew is not installed."
-
   log "Updating Homebrew..."
   brew update
 
-  log "Installing formulae: ${formulae[*]}"
-  brew install "${formulae[@]}"
-
   log "Installing casks: ${casks[*]}"
+
   brew install --cask "${casks[@]}"
+
+  ensure_nix
+
+  log "Installing nix packages"
+  nix profile add "$REPO_DIR/nix" --extra-experimental-features 'nix-command flakes'
 }
 
 nixos() {

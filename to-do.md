@@ -2,8 +2,7 @@
 
 ## simple
 
-- after running on macOS again, uninstall everything from homebrew that is
-  handled by nix. can move all that stuff...
+- alias ls -> lsd and whatever sd replaces -> sd
 
 ## features
 

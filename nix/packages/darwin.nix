@@ -3,6 +3,6 @@
 (import ./core.nix { inherit pkgs; })
 ++
 (with pkgs; [
-	ghostty
+	#	ghostty has an issue installing thru nix package manager
 ])
 

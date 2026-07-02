@@ -1,12 +1,14 @@
 $env.config.show_banner = false
-# remove after macos nix migration and home manager
-$env.PATH = (
-  $env.PATH
-    | split row (char esep)
-    | append ($env.HOME | path join ".local/bin")
-)
 
-mkdir ($nu.data-dir | path join "vendor/autoload")
+$nu.data-dir | path join "vendor/autoload" | mkdir $in
+
+$env.PATH = (
+  # for macos
+  $env.PATH
+    | split row (char env_sep)
+    | append ~/.nix-profile/bin
+    | append /nix/var/nix/profiles/default/bin
+)
 
 # history
 atuin init nu | save -f ($nu.data-dir | path join "vendor/autoload/atuin.nu")
