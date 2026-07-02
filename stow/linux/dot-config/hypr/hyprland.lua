@@ -28,7 +28,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-programs = {
+local programs = {
     terminal = "ghostty",
     menu     = "vicinae toggle",
     browser  = "zen",
@@ -37,7 +37,7 @@ programs = {
 -------------------
 ---- AUTOSTART ----
 -------------------
-autostart = {
+local autostart = {
     "noctalia-shell",
     "udiskie",
     "kdeconnectd",
@@ -294,7 +294,7 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
-hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.resize({ x = -20, y = 0 }))
+hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.resize({ x = -20.0, y = 0.0 }))
 hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 20, y = 0 }))
 hl.bind(mainMod .. " + ALT + up",    hl.dsp.window.resize({ x = 0, y = -20 }))
 hl.bind(mainMod .. " + ALT + down",  hl.dsp.window.resize({ x = 0, y = 20 }))
@@ -334,6 +334,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Clipboard and Screenshot
+hl.bind(mainMod .. " + SHIFT + F2", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(mainMod .. " + SHIFT + ALT + F2", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
+hl.bind(mainMod .. " + SHIFT + F4", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
+hl.bind(mainMod .. " + SHIFT + ALT + F4", hl.dsp.exec_cmd("hyprshot -m window --raw | satty --filename -"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
