@@ -213,9 +213,7 @@
       inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default # openai's terminal agentic ai
 
       # Noctalia with calendar support
-      (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-        calendarSupport = true;
-      })
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ]);
 
   systemd.user.services.vicinae = {
