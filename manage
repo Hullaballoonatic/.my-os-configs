@@ -81,7 +81,7 @@ nixos() {
   esac
 }
 
-bootstrap() {
+build() {
   case "$OS" in
     darwin) darwin ;;
     linux) nixos ;;
@@ -165,15 +165,10 @@ update() {
   log "Update complete."
 }
 
-restart_services() {
-  systemctl --user restart vicinae.service || true
-}
-
 case "$COMMAND" in
-  bootstrap) bootstrap ;;
+  build) build ;;
   apply) apply ;;
   update) update ;;
-  restart) restart_services ;;
-  *) abort "Usage: $0 [bootstrap|apply|update]" ;;
+  *) abort "Usage: $0 [build|apply|update]" ;;
 esac
 

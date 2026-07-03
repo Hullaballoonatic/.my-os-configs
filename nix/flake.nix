@@ -6,7 +6,6 @@
 
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
-    vicinae.url = "github:vicinaehq/vicinae";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
   };
