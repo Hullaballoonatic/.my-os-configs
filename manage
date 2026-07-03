@@ -61,10 +61,6 @@ nixos() {
   log "Rebuilding NixOS configuration for $TARGET..."
 
   local flake="$REPO_DIR/nix#$TARGET"
-  local args=(
-    switch
-    --flake "$REPO_DIR/nix#$TARGET"
-  )
 
   case "$LOCAL_HOST:$TARGET" in
     desktop:desktop)
@@ -83,8 +79,6 @@ nixos() {
       abort "Unsupported rebuild path: local=$LOCAL_HOST target=$TARGET"
       ;;
   esac
-
-  sudo nixos-rebuild "${args[@]}"
 }
 
 bootstrap() {
