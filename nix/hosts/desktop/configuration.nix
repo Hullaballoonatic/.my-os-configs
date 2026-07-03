@@ -201,7 +201,6 @@
 
       # flakes
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default # openai's terminal agentic ai
 
       # Noctalia with calendar support

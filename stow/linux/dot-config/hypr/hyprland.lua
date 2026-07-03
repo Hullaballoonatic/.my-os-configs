@@ -30,7 +30,7 @@ hl.monitor({
 -- Set programs that you use
 local programs = {
     terminal = "ghostty",
-    menu     = "vicinae toggle",
+    menu     = "noctalia msg panel-toggle launcher",
     browser  = "zen",
 }
 
@@ -43,7 +43,6 @@ local autostart = {
     "kdeconnectd",
     "kdeconnect-indicator",
     "sunshine",
-    "vicinae server",
 }
 
 local override = os.getenv("HOME") .. "/.config/hypr/hyprland.local.lua"
