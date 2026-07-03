@@ -101,15 +101,7 @@
   services.power-profiles-daemon.enable = true;
   services.gnome.evolution-data-server.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        user = "username";
-        command = "start-hyprland";
-      };
-    };
-  };
+  services.getty.autologinUser = "casey";
 
   programs.gpu-screen-recorder.enable = true;
 
