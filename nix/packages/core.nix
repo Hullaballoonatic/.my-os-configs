@@ -34,6 +34,8 @@ with pkgs; [
   stylua
   lua-language-server
   nixd
+  taplo
+  vscode-langservers-extracted
   yaml-language-server
 ]
 
