@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/nix.nix
   ];
 
   nix.gc = {
@@ -17,7 +18,6 @@
   nixpkgs.config.allowUnfree = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
   systemd.services.enable-wake-on-lan = {
@@ -241,6 +241,8 @@
     QT_QPA_PLATFORM = "wayland;xcb";
     GTK_USE_PORTAL = "1";
   };
+
+  home-manager.users.casey = import ./home.nix;
 
   system.stateVersion = "25.05";
 }

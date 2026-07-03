@@ -39,7 +39,10 @@
           lib.nixosSystem {
             system = host.system;
             specialArgs = { inherit inputs hostname username; };
-            modules = [ ./hosts/${hostname}/configuration.nix ];
+            modules = [ 
+              ./hosts/${hostname}/configuration.nix
+              inputs.home-manager.nixosModules.home-manager
+            ];
           };
 
       makePackages = system: packageFile:
