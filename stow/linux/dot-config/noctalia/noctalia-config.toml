@@ -1,0 +1,147 @@
+[bar]
+order = [ "Top" ]
+
+    [bar.Top]
+    background_opacity = 0.8
+    border_width = 0.5
+    capsule = true
+    center = [ "workspaces" ]
+    end = [ "group:g3", "clipboard", "notifications", "clock" ]
+    margin_ends = 800
+    padding = 5
+    radius = 19
+    show_on_workspace_switch = false
+    start = [ "cpu", "tray" ]
+
+        [[bar.Top.capsule_group]]
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "bluetooth", "volume" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.Top.capsule_group]]
+        fill = "surface_variant"
+        id = "g2"
+        members = [ "control-center", "clipboard" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.Top.capsule_group]]
+        fill = "surface_variant"
+        id = "g3"
+        members = [ "media", "volume" ]
+        opacity = 1.0
+        padding = 6.0
+
+[battery.device."/org/freedesktop/UPower/devices/battery_hidpp_battery_0"]
+warning_threshold = 5
+
+[calendar]
+enabled = true
+
+[control_center]
+hidden_tabs = [ "monitor", "power" ]
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1920.0
+    cy = 961.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[shell.panel]
+clipboard_position = "auto"
+control_center_placement = "floating"
+open_near_click_clipboard = true
+open_near_click_control_center = true
+open_near_click_session = true
+open_near_click_wallpaper = true
+session_placement = "floating"
+wallpaper_placement = "floating"
+
+[shell.screen_corners]
+enabled = true
+
+[[shell.session.actions]]
+action = "lock"
+countdown_seconds = 0.0
+enabled = false
+shortcut = "1"
+variant = "default"
+
+[[shell.session.actions]]
+action = "logout"
+countdown_seconds = 0.0
+enabled = false
+shortcut = "2"
+variant = "default"
+
+[[shell.session.actions]]
+action = "suspend"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "3"
+variant = "default"
+
+[[shell.session.actions]]
+action = "reboot"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "4"
+variant = "default"
+
+[[shell.session.actions]]
+action = "shutdown"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "5"
+variant = "destructive"
+
+[theme]
+builtin = "Tokyo-Night"
+
+    [theme.templates]
+    builtin_ids = [ "ghostty", "hyprland", "starship" ]
+    community_ids = [ "zen-browser", "vicinae" ]
+
+[wallpaper]
+directory = "/home/casey/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/casey/Pictures/Wallpapers/wallhaven_p9rpv3.jpg"
+
+    [wallpaper.last]
+    path = "/home/casey/Pictures/Wallpapers/wallhaven_p9rpv3.jpg"
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.notifications]
+hide_when_no_unread = true
