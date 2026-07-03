@@ -1,8 +1,10 @@
 {
-  description = "Casey's Linux systems and packages";
+  description = "Casey's systems and packages";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    home-manager.url = "github:nix-community/home-manager";
 
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
@@ -40,7 +42,7 @@
             specialArgs = { inherit inputs hostname username; };
             modules = [ 
               ./hosts/${hostname}/configuration.nix
-              # inputs.home-manager.nixosModules.home-manager
+              inputs.home-manager.nixosModules.home-manager
             ];
           };
 
@@ -67,7 +69,7 @@
             cargoLock.lockFile = "${inputs.home-pi-api}/Cargo.lock";
           };
         };
-        aarch64-darwin.default = makePackages "aarch64-darwin.darwin" ./packages/darwin.nix;
+        aarch64-darwin.default = makePackages "aarch64-darwin" ./packages/darwin.nix;
       };
 
       formatter =

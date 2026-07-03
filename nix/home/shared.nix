@@ -2,7 +2,7 @@
 
 {
 	imports = [
-		../../home/linux.nix
+  	./modules/tmux.nix
 	];
 
 	_module.args = {

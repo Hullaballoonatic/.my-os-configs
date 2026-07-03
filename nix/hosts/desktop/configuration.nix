@@ -16,6 +16,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-10.29.2"
+  ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   networking.hostName = hostname;
@@ -218,7 +221,7 @@
     GTK_USE_PORTAL = "1";
   };
 
-  # home-manager.users.casey = import ./home.nix;
+  home-manager.users.casey = import ./home.nix;
 
   system.stateVersion = "25.05";
 }
