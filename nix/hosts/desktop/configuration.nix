@@ -242,7 +242,7 @@
     GTK_USE_PORTAL = "1";
   };
 
-  home-manager.users.casey = import ./home.nix;
+  # home-manager.users.casey = import ./home.nix;
 
   system.stateVersion = "25.05";
 }
