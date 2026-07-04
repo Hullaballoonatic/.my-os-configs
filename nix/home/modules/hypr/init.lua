@@ -366,8 +366,5 @@ suppressMaximizeRule:set_enabled(false)
 -- })
 -- overlayLayerRule:set_enabled(false)
 
--- This loads Noctalia-generated Hyprland colors.
-dofile("/home/casey/.config/hypr/noctalia/noctalia-colors.lua")
-
 -- For Noctalia Color templates
 require("noctalia").apply_theme()

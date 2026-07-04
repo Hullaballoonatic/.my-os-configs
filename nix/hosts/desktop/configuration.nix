@@ -6,6 +6,12 @@
     ../../modules/nix.nix
   ];
 
+  home-manager.extraSpecialArgs = {
+    inherit inputs hostname username;
+  };
+
+  home-manager.users.casey = import ./home.nix;
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -108,11 +114,6 @@
 
   programs.gpu-screen-recorder.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -121,6 +122,12 @@
 
   xdg.portal = {
     enable = true;
+
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
+
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
@@ -205,8 +212,6 @@
       # flakes
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default # openai's terminal agentic ai
-
-      # Noctalia with calendar support
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ]);
 
@@ -220,8 +225,6 @@
     QT_QPA_PLATFORM = "wayland;xcb";
     GTK_USE_PORTAL = "1";
   };
-
-  home-manager.users.casey = import ./home.nix;
 
   system.stateVersion = "25.05";
 }

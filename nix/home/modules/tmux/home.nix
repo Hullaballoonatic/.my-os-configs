@@ -2,9 +2,6 @@
 
 {
 	home.packages = with pkgs; [
-		sesh
-		fzf
-		fd
 		nushell
 	];
 
@@ -16,6 +13,8 @@
 		keyMode = "vi";
 		escapeTime = 0;
 		historyLimit = 50000;
+
+		shell = "${pkgs.nushell}/bin/nu";
 
 	  plugins = with pkgs.tmuxPlugins; [
 			sensible
@@ -39,20 +38,6 @@
 			bind-key -T copy-mode-vi v   send-keys -X begin-selection
 			bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
 			bind-key -T copy-mode-vi y   send-keys -X copy-selection-and-cancel
-
-			bind-key "S" run-shell "sesh connect \"$(
-				sesh list --icons | fzf-tmux -p 80%,70% \
-					--no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
-					--header '  ^a all ^t tmux ^x zoxide ^d tmux kill ^f find' \
-					--bind 'tab:down,btab:up' \
-					--bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)' \
-					--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)' \
-					--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)' \
-					--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
-					--bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)' \
-					--preview-window 'right:55%' \
-					--preview 'sesh preview {}'
-			)\""
 
 			# Status Bar (pill look; requires a font with Powerline/Nerd glyphs)
 			set -g @pill-inner-right '🭐'

@@ -1,7 +1,0 @@
-program_options:
-  tray: false
-  notify: false
-  automount: true
-  file_manager: yazi
-  terminal: ghostty
-

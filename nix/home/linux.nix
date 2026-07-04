@@ -1,5 +1,8 @@
 {
-	imports = [./shared.nix];
+	imports = [
+		./shared.nix
+		./modules/udiskie/home.nix
+	];
 
   home.username = "casey";
 	home.homeDirectory = "/home/casey";

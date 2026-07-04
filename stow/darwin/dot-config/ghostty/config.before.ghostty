@@ -1,3 +1,0 @@
-env = XDG_CONFIG_HOME=/Users/CaseyStratton/.config/
-env = PATH=/nix/var/nix/profiles/default/bin:/Users/CaseyStratton/.nix-profile/bin:/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
