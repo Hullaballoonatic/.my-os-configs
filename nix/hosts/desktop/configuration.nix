@@ -6,12 +6,6 @@
     ../../modules/nix.nix
   ];
 
-  home-manager.extraSpecialArgs = {
-    inherit inputs hostname username;
-  };
-
-  home-manager.users.casey = import ./home.nix;
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -184,36 +178,10 @@
   hardware.steam-hardware.enable = true;
   hardware.keyboard.zsa.enable = true;
 
-  environment.systemPackages = 
-    (import ../../packages/linux.nix { inherit pkgs; })
-    ++
-    (with pkgs; [
-      # compilers
-      gcc
-
-      # utilities
-      bubblewrap # wanted by codex
-      ethtool
-
-      # screenshot and clipboard
-      grim
-      slurp
-      wl-clipboard
-      satty
-      hyprshot
-
-      # gui apps
-      ghostty
-      protonup-qt
-      scrcpy # control android phone 
-      vesktop # discord but not shit
-      keymapp # keyboard editing
-
-      # flakes
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default # openai's terminal agentic ai
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ]);
+  environment.systemPackages = with pkgs; [
+    # bubblewrap # wanted by codex # commented to see if home manager provides it
+    ethtool # i don't remember what this does
+  ];
 
   environment.sessionVariables = {
     EDITOR = "nvim";

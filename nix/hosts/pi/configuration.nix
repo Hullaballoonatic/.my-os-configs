@@ -85,17 +85,14 @@ in
       8787
     ];
 
-    environment.systemPackages = 
-      (import ../../packages/linux.nix { inherit pkgs; })
-      ++ 
-      (with pkgs; [
-        curl
-        wget
-        wakeonlan
-        (writeShellScriptBin "wake-desktop" ''
-          exec ${wakeonlan}/bin/wakeonlan a8:a1:59:6f:72:d5
-        '')
-      ]);
+    environment.systemPackages = with pkgs; [
+      curl
+      wget
+      wakeonlan
+      (writeShellScriptBin "wake-desktop" ''
+        exec ${wakeonlan}/bin/wakeonlan a8:a1:59:6f:72:d5
+      '')
+    ];
 
     nix.gc = {
       automatic = true;

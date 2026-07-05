@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
@@ -12,10 +15,9 @@
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ nixpkgs, ... }:
     let
       lib = nixpkgs.lib;
-      username = "casey";
 
       hosts = {
         desktop = {
@@ -30,38 +32,56 @@
       pkgsFor = system:
         import nixpkgs {
           inherit system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "pnpm-10.29.2"
+            ];
+          };
         };
 
       makeSystem = hostname:
         let
           host = hosts.${hostname};
+          username = "casey";
         in
           lib.nixosSystem {
             system = host.system;
             specialArgs = { inherit inputs hostname username; };
-            modules = [ 
+            modules = [
               ./hosts/${hostname}/configuration.nix
               inputs.home-manager.nixosModules.home-manager
-            ];
-          };
 
-      makePackages = system: packageFile:
-        let
-          pkgs = pkgsFor system;
-        in
-          pkgs.buildEnv {
-            name = "my-os-packages";
-            paths = import packageFile { inherit pkgs; };
+              {
+                home-manager.useGlobalPkgs = true;
+
+                home-manager.extraSpecialArgs = {
+                  inherit inputs hostname username;
+                };
+
+                home-manager.users.${username} = import ./hosts/${hostname}/home.nix;
+              }
+            ];
           };
     in {
       nixosConfigurations =
         lib.mapAttrs (hostname: _: makeSystem hostname) hosts;
-      
+     
+      homeConfigurations."CaseyStratton" =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor "arch64-darwin";
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "CaseyStratton";
+            hostname = "macbook";
+          };
+          modules = [
+            ./home/darwin.nix
+          ];
+        };
+
       packages = {
-        x86_64-linux.default = makePackages "x86_64-linux" ./packages/linux.nix;
         aarch64-linux = {
-          default = makePackages "aarch64-linux" ./packages/linux.nix;
           home-pi-api = (pkgsFor "aarch64-linux").rustPlatform.buildRustPackage {
             pname = "home-pi-api";
             version = "0.1.0";
@@ -69,7 +89,6 @@
             cargoLock.lockFile = "${inputs.home-pi-api}/Cargo.lock";
           };
         };
-        aarch64-darwin.default = makePackages "aarch64-darwin" ./packages/darwin.nix;
       };
 
       formatter =

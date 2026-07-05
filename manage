@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-COMMAND="${1:-update}"
+COMMAND="${1:-upgrade}"
 LOCAL_HOST=$(hostname)
 TARGET="${2:-$LOCAL_HOST}"
 SCRIPT_PATH="${BASH_SOURCE[0]}"
@@ -54,7 +54,7 @@ darwin() {
   ensure_nix
 
   log "Installing nix packages"
-  nix profile add "$REPO_DIR/nix" --extra-experimental-features 'nix-command flakes'
+  home-manager switch --flake "$REPO_DIR/nix#CaseyStratton"
 }
 
 nixos() {
@@ -94,8 +94,6 @@ update() {
     linux)
       log "Updating NixOS flake..."
       nix flake update --flake "$REPO_DIR/nix"
-
-      nixos
       ;;
     *)
       has topgrade || abort "topgrade is not installed."
@@ -106,9 +104,14 @@ update() {
   log "Update complete."
 }
 
+upgrade() {
+  update
+  build
+}
+
 case "$COMMAND" in
   build) build ;;
   update) update ;;
-  *) abort "Usage: $0 [build|update]" ;;
+  *) abort "Usage: $0 [build|update|upgrade]" ;;
 esac
 

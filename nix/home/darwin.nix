@@ -1,6 +1,6 @@
 {
 	imports = [
-		./shared.nix
+		./core.nix
 	];
 
   home.username = "CaseyStratton";

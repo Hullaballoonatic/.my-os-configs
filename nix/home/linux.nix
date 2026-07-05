@@ -1,6 +1,6 @@
 {
 	imports = [
-		./shared.nix
+		./core.nix
 		./modules/udiskie/home.nix
 	];
 
