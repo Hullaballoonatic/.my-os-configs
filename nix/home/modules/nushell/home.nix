@@ -1,13 +1,13 @@
 {
 	programs.nushell = {
-    enable = true;
+        enable = true;
 
-    loginFile.source = ./login.nu;
+        loginFile.source = ./login.nu;
 
-    extraConfig = ''
-      alias manage = ^~/.my-os-configs/manage
-		'';
+        extraConfig = ''
+          alias manage = ^~/.my-os-configs/manage
+        '';
 
-		settings.show_banner = false;
-	};
+        settings.show_banner = false;
+    };
 }

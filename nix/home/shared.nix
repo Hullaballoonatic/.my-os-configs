@@ -4,6 +4,7 @@
 		./modules/carapace/home.nix
 		./modules/fzf/home.nix
 		./modules/ghostty/home.nix
+		./modules/nvim/home.nix
 		./modules/nushell/home.nix
 		./modules/sesh/home.nix
 		./modules/starship/home.nix

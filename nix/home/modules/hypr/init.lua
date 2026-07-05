@@ -367,4 +367,3 @@ suppressMaximizeRule:set_enabled(false)
 -- overlayLayerRule:set_enabled(false)
 
 -- For Noctalia Color templates
-require("noctalia").apply_theme()

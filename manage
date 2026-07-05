@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-COMMAND="${1:-apply}"
+COMMAND="${1:-update}"
 LOCAL_HOST=$(hostname)
 TARGET="${2:-$LOCAL_HOST}"
 SCRIPT_PATH="${BASH_SOURCE[0]}"
@@ -87,65 +87,6 @@ build() {
     linux) nixos ;;
     *) abort "Unsupported OS: $OS" ;;
   esac
-
-  apply
-}
-
-dotfile_name() {
-  local name="$1"
-  printf '%s\n' "${name/#dot-/.}"
-}
-
-stow_target_path() {
-  local rel="$1"
-  local out=""
-  local part
-
-  IFS=/ read -ra parts <<< "$rel"
-
-  for part in "${parts[@]}"; do
-    [[ -n "$out" ]] && out+="/"
-    out+="$(dotfile_name "$part")"
-  done
-
-  printf '%s/%s\n' "$HOME" "$out"
-}
-
-remove_conflicting_symlinks() {
-  local dir="$1"
-  local source_root="$dir"
-  local source target rel source_real target_real
-
-  [[ -d "$source_root" ]] || return 0
-
-  while IFS= read -r -d '' source; do
-    rel="${source#"$source_root"/}"
-    target="$(stow_target_path "$rel")"
-
-    [[ -L "$target" ]] || continue
-
-    source_real="$(readlink -f "$source" 2>/dev/null || true)"
-    target_real="$(readlink -f "$target" 2>/dev/null || true)"
-
-    if [[ -z "$target_real" || "$source_real" != "$target_real" ]]; then
-      log "Removing conflicting symlink: $target -> $(readlink "$target")"
-      rm "$target"
-    fi
-  done < <(find "$source_root" \( -type f -o -type l \) -print0)
-}
-
-apply() {
-  for package in common "$OS"; do
-    [[ -d "$REPO_DIR/stow/$package" ]] || continue
-
-    log "Preparing $package"
-    remove_conflicting_symlinks "$REPO_DIR/stow/$package"
-
-    log "Stowing $package"
-    stow -d "$REPO_DIR/stow" -t "$HOME" -R --no-folding --dotfiles --adopt "$package"
-  done
-
-  log "Apply complete."
 }
 
 update() {
@@ -167,8 +108,7 @@ update() {
 
 case "$COMMAND" in
   build) build ;;
-  apply) apply ;;
   update) update ;;
-  *) abort "Usage: $0 [build|apply|update]" ;;
+  *) abort "Usage: $0 [build|update]" ;;
 esac
 
