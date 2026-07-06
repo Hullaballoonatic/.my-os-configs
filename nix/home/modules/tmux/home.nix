@@ -23,6 +23,12 @@
 		];
 
 		extraConfig = ''
+			# Ensure tmux can always spawn Nushell even in minimal login environments
+			# (e.g., GUI terminal startup paths without your interactive PATH).
+			set -g default-shell "${pkgs.nushell}/bin/nu"
+			set -gu default-command
+			set -ga update-environment " PATH"
+
 			set -g renumber-windows on
 
 		  bind -n C-Left  select-pane -L
@@ -72,4 +78,3 @@
 		'';
 	};
 }
-

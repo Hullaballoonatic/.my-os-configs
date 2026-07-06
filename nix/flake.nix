@@ -69,7 +69,7 @@
      
       homeConfigurations."CaseyStratton" =
         inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor "arch64-darwin";
+          pkgs = pkgsFor "aarch64-darwin";
           extraSpecialArgs = {
             inherit inputs;
             username = "CaseyStratton";
@@ -110,4 +110,3 @@
       };
     };
 }
-

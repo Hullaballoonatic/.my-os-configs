@@ -39,6 +39,48 @@ ensure_nix() {
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 }
 
+home_manager_switch() {
+  local flake_ref="$1"
+  local -a hm_cmd
+
+  if has home-manager; then
+    hm_cmd=(home-manager switch --flake "$flake_ref")
+  else
+    log "home-manager is not in PATH; using nix run fallback."
+    hm_cmd=(nix run github:nix-community/home-manager -- switch --flake "$flake_ref")
+  fi
+
+  local switch_log
+  switch_log="$(mktemp)"
+
+  if "${hm_cmd[@]}" 2>&1 | tee "$switch_log"; then
+    rm -f "$switch_log"
+    return
+  fi
+
+  if grep -q 'An existing package already provides the following file:' "$switch_log"; then
+    log "Detected a nix profile package conflict; removing conflicting profile entries and retrying once."
+
+    local store_path
+    while IFS= read -r store_path; do
+      [[ -n "$store_path" ]] || continue
+      nix profile remove "$store_path" >/dev/null 2>&1 || true
+    done < <(
+      grep -Eo '/nix/store/[[:alnum:]]{32}-[^"[:space:]]+' "$switch_log" \
+        | sed -E 's#/(bin|lib|share|etc|include|sbin|libexec)/.*##' \
+        | sort -u
+    )
+
+    nix profile remove home-manager-path >/dev/null 2>&1 || true
+    "${hm_cmd[@]}"
+    rm -f "$switch_log"
+    return
+  fi
+
+  rm -f "$switch_log"
+  return 1
+}
+
 darwin() {
   local casks=(
     ghostty
@@ -54,7 +96,8 @@ darwin() {
   ensure_nix
 
   log "Installing nix packages"
-  home-manager switch --flake "$REPO_DIR/nix#CaseyStratton"
+
+  home_manager_switch "$REPO_DIR/nix#CaseyStratton"
 }
 
 nixos() {
@@ -114,4 +157,3 @@ case "$COMMAND" in
   update) update ;;
   *) abort "Usage: $0 [build|update|upgrade]" ;;
 esac
-

@@ -2,6 +2,7 @@
 	imports = [
 		./core.nix
 		./modules/udiskie/home.nix
+		./modules/ghostty/home.nix
 	];
 
   home.username = "casey";

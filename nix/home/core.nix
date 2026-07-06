@@ -7,7 +7,6 @@
 		./modules/carapace/home.nix
 		./modules/fd/home.nix
 		./modules/fzf/home.nix
-		./modules/ghostty/home.nix
 		./modules/gh/home.nix
 		./modules/git/home.nix
 		./modules/htop/home.nix
