@@ -15,7 +15,7 @@
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
   };
 
-  outputs = inputs@{ nixpkgs, ... }:
+  outputs = inputs@{ nixpkgs, self, ... }:
     let
       lib = nixpkgs.lib;
 
@@ -47,7 +47,7 @@
         in
           lib.nixosSystem {
             system = host.system;
-            specialArgs = { inherit inputs hostname username; };
+            specialArgs = { inherit inputs self hostname username; };
             modules = [
               ./hosts/${hostname}/configuration.nix
               inputs.home-manager.nixosModules.home-manager
@@ -64,8 +64,7 @@
             ];
           };
     in {
-      nixosConfigurations =
-        lib.mapAttrs (hostname: _: makeSystem hostname) hosts;
+      nixosConfigurations = lib.mapAttrs (hostname: _: makeSystem hostname) hosts;
      
       homeConfigurations."CaseyStratton" =
         inputs.home-manager.lib.homeManagerConfiguration {
@@ -80,19 +79,9 @@
           ];
         };
 
-      packages = {
-        aarch64-linux = {
-          home-pi-api = (pkgsFor "aarch64-linux").rustPlatform.buildRustPackage {
-            pname = "home-pi-api";
-            version = "0.1.0";
-            src = inputs.home-pi-api;
-            cargoLock.lockFile = "${inputs.home-pi-api}/Cargo.lock";
-          };
-        };
-      };
+      packages.aarch64-linux.home-pi-api = inputs.home-pi-api.packages.aarch64-linux.default;
 
-      formatter =
-        lib.mapAttrs (_: host: (pkgsFor host.system).alejandra) hosts;
+      formatter = lib.mapAttrs (_: host: (pkgsFor host.system).alejandra) hosts;
 
       templates = {
         rust = {
