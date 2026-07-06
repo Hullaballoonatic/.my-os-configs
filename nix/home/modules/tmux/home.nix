@@ -16,6 +16,10 @@
 
 		shell = "${pkgs.nushell}/bin/nu";
 
+		disableConfirmationPrompt = true;
+
+		mouse = true;
+
 	  plugins = with pkgs.tmuxPlugins; [
 			sensible
 			yank
@@ -25,7 +29,6 @@
 		extraConfig = ''
 			# Ensure tmux can always spawn Nushell even in minimal login environments
 			# (e.g., GUI terminal startup paths without your interactive PATH).
-			set -g default-shell "${pkgs.nushell}/bin/nu"
 			set -gu default-command
 			set -ga update-environment " PATH"
 
