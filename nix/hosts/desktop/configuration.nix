@@ -1,4 +1,4 @@
-{ pkgs, inputs, hostname, username, ... }:
+{ pkgs, hostname, username, ... }:
 
 {
   imports = [
@@ -143,7 +143,6 @@
     openFirewall = true;
   };
 
-  programs.kdeconnect.enable = true;
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;

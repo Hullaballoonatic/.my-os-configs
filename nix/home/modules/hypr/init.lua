@@ -42,7 +42,6 @@ local autostart = {
     "udiskie",
     "kdeconnectd",
     "kdeconnect-indicator",
-    "sunshine",
 }
 
 local override = os.getenv("HOME") .. "/.config/hypr/hyprland.local.lua"

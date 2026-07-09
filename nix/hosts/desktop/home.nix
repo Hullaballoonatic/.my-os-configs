@@ -7,6 +7,7 @@
 		../../home/modules/gcc/home.nix
 		../../home/modules/hypr/home.nix
 		../../home/modules/hyprshot/home.nix
+		../../home/modules/kde-connect/home.nix
 		../../home/modules/noctalia/home.nix
 		../../home/modules/satty/home.nix
 		../../home/modules/vesktop/home.nix
