@@ -1,6 +1,7 @@
 {
 	imports = [
 		./core.nix
+		./modules/nixvim/home.nix
 	];
 
   home.username = "CaseyStratton";

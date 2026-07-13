@@ -13,7 +13,6 @@
 		./modules/jq/home.nix
 		./modules/lsd/home.nix
 		./modules/nushell/home.nix
-		./modules/nvim/home.nix
 		./modules/ripgrep/home.nix
 		./modules/sesh/home.nix
 		./modules/starship/home.nix

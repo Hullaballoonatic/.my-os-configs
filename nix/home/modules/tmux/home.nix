@@ -33,6 +33,7 @@
 			set -ga update-environment " PATH"
 
 			set -g renumber-windows on
+			set -g allow-passthrough on
 
 		  bind -n C-Left  select-pane -L
 		  bind -n C-Down  select-pane -D
