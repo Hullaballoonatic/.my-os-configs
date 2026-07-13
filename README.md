@@ -3,16 +3,17 @@
 
 `manage` is a script for bootstrapping, applying, and updating the configurations
 
+`manage` with no arguments performs `manage upgrade`
+
+`manage upgrade`
+  ├── performs update
+  └── performs bootstrap
+
+`manage update`
+  └── nix flake update
+
 `manage bootstrap`
   ├── install platform packages
   ├── install/update Nix
   ├── install Nix profile
-  └── apply dotfiles
-
-`manage apply`
-  ├── remove conflicting symlinks
-  └── stow --adopt
-
-`manage update`
-  ├── nix flake update (NixOS)
-  └── topgrade (other platforms)
+  └── apply configurations
