@@ -284,17 +284,23 @@ in
 				};
 
 				keymaps = {
-					"<leader>sh" =       { action = "help_tags";   options.desc = "[s]earch [h]elp"; };
-					"<leader>sk" =       { action = "keymaps";     options.desc = "[s]earch [k]eymaps"; };
-					"<leader>sf" =       { action = "find_files";  options.desc = "[s]earch [f]iles"; };
-					"<leader>ss" =       { action = "builtin";     options.desc = "[s]earch [s]elect telescope"; };
-					"<leader>sw" =       { action = "grep_string"; options.desc = "[s]earch current [w]ord"; mode = ["n" "v"]; };
-					"<leader>sg" =       { action = "live_grep";   options.desc = "[s]earch by [g]rep"; };
-					"<leader>sd" =       { action = "diagnostics"; options.desc = "[s]earch [d]iagnostics"; };
-					"<leader>sr" =       { action = "resume";      options.desc = "[s]earch [r]esume"; };
-					"<leader>s." =       { action = "oldfiles";    options.desc = "[s]earch recent files (. for repreat)"; };
-					"<leader>sc" =       { action = "commands";    options.desc = "[s]earch [c]commands"; };
-					"<leader><leader>" = { action = "buffers";     options.desc = "[ ] Find existing buffers"; };
+					"<leader>sh" =       { action = "help_tags";                     options.desc = "[s]earch [h]elp"; };
+					"<leader>sk" =       { action = "keymaps";                       options.desc = "[s]earch [k]eymaps"; };
+					"<leader>sf" =       { action = "find_files";                    options.desc = "[s]earch [f]iles"; };
+					"<leader>ss" =       { action = "builtin";                       options.desc = "[s]earch [s]elect telescope"; };
+					"<leader>sw" =       { action = "grep_string"; mode = ["n" "v"]; options.desc = "[s]earch current [w]ord"; };
+					"<leader>sg" =       { action = "live_grep";                     options.desc = "[s]earch by [g]rep"; };
+					"<leader>sd" =       { action = "diagnostics";                   options.desc = "[s]earch [d]iagnostics"; };
+					"<leader>sr" =       { action = "resume";                        options.desc = "[s]earch [r]esume"; };
+					"<leader>s." =       { action = "oldfiles";                      options.desc = "[s]earch recent files (. for repreat)"; };
+					"<leader>sc" =       { action = "commands";                      options.desc = "[s]earch [c]commands"; };
+					"<leader><leader>" = { action = "buffers";                       options.desc = "[ ] Find existing buffers"; };
+					"grr" =              { action = "lsp_references";                options.desc = "[r]eferences"; };
+					"gri" =              { action = "lsp_implementations";           options.desc = "[i]implementation"; };
+					"grd" =              { action = "lsp_definitions";               options.desc ="[d]efinition"; };
+					"grt" =              { action = "lsp_type_definitions";          options.desc = "[t]ype definition"; };
+					"gO" =               { action = "lsp_document_symbols";          options.desc = "d[O]cument symbols"; };
+					"gW" =               { action = "lsp_dynamic_workspace_symbols"; options.desc = "[W]orkspace symbols"; };
 				};
 			};
 			
@@ -405,11 +411,8 @@ in
 
 			# Testing and Debugger
 			# --------------------
-			# do i need to set up adapters?
-			# do i need plenary for things? looks like it is deprecated or something...
 			dap.enable = true;
 			dap-ui.enable = true;
-			# do i need nvim/nio?
 			neotest = {
 				enable = true;
 
@@ -429,52 +432,9 @@ in
 
 		lsp = {
 			keymaps = [
-				{
-					key = "grn";
-					lspBufAction = "rename";
-					options.desc = "re[n]ame";
-				}
-				{
-					key = "gra";
-					lspBufAction = "code_action";
-					mode = ["n" "x"];
-					options.desc = "[a]ction";
-				}
-				{
-					key = "grD";
-					lspBufAction = "declaration";
-					options.desc = "[D]eclaration";
-				}
-				{
-					key = "grr";
-					action = mkRaw "require('telescope.builtin').lsp_references";
-					options.desc = "[r]eferences";
-				}
-				{
-					key = "gri";
-					action = mkRaw "require('telescope.builtin').lsp_implementations";
-					options.desc = "[i]implementation";
-				}
-				{
-					key = "grd";
-					action = mkRaw "require('telescope.builtin').lsp_definitions";
-					options.desc ="[d]efinition";
-				}
-				{
-					key = "grt";
-					action = mkRaw "require('telescope.builtin').lsp_type_definitions";
-					options.desc = "[t]ype definition";
-				}
-				{
-					key = "gO";
-					action = mkRaw "require('telescope.builtin').lsp_document_symbols";
-					options.desc = "d[O]cument symbols";
-				}
-				{
-					key = "gW";
-					action = mkRaw "require('telescope.builtin').lsp_dynamic_workspace_symbols";
-					options.desc = "[W]orkspace symbols";
-				}
+				{ key = "grn"; lspBufAction = "rename";      options.desc = "re[n]ame"; }
+				{ key = "gra"; lspBufAction = "code_action"; options.desc = "[a]ction"; mode = ["n" "x"]; }
+				{ key = "grD"; lspBufAction = "declaration"; options.desc = "[D]eclaration"; }
 			];
 
 			servers = {
