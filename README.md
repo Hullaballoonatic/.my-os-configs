@@ -4,17 +4,15 @@
 
 `manage` with no arguments performs `manage upgrade`
 
-```text
-manage upgrade
-  ├── performs update
+`manage upgrade`</br>
+  ├── performs update</br>
   └── performs bootstrap
 
-manage update
+`manage update`</br>
   └── nix flake update
 
-manage bootstrap
-  ├── install platform packages
-  ├── install/update Nix
-  ├── install Nix profile
+`manage bootstrap`</br>
+  ├── install platform packages</br>
+  ├── install/update Nix</br>
+  ├── install Nix profile</br>
   └── apply configurations
-```
