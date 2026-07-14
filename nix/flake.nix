@@ -14,6 +14,7 @@
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
+    herdr.url = "github:ogulcancelik/herdr";
   };
 
   outputs = inputs@{ nixpkgs, self, ... }:

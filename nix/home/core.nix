@@ -9,6 +9,7 @@
 		./modules/fzf/home.nix
 		./modules/gh/home.nix
 		./modules/git/home.nix
+		./modules/herdr/home.nix
 		./modules/htop/home.nix
 		./modules/jq/home.nix
 		./modules/lsd/home.nix

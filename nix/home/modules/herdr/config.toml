@@ -1,0 +1,4 @@
+[keys]
+prefix = "ctrl+space"
+split_vertical = "prefix+plus"
+
