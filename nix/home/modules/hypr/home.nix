@@ -8,9 +8,6 @@
 				autoLoad = true;
 				content = ./init.lua;
 			};	
-			"noctalia.lua" = {
-				content = ./noctalia.lua;
-			};
 		};
 	};
 }

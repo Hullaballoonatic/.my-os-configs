@@ -12,11 +12,12 @@
     nixvim.url = "github:nix-community/nixvim";
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
-    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ nixpkgs, self, ... }:
+  outputs = inputs@{ nixpkgs, self, stylix, ... }:
     let
       lib = nixpkgs.lib;
 
@@ -60,6 +61,10 @@
                   inherit inputs hostname username;
                 };
 
+                home-manager.sharedModules = [
+                  stylix.homeModules.stylix
+                ];
+
                 home-manager.users.${username} = import ./hosts/${hostname}/home.nix;
               }
             ];
@@ -77,6 +82,12 @@
           };
           modules = [
             ./home/darwin.nix
+            
+            {
+              home-manager.sharedModules = [
+                stylix.homeModules.stylix
+              ];
+            }
           ];
         };
 

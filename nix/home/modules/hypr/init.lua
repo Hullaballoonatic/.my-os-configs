@@ -31,7 +31,7 @@ hl.monitor({
 local programs = {
     terminal = "ghostty",
     menu     = "noctalia msg panel-toggle launcher",
-    browser  = "zen",
+    browser  = "zen-beta",
 }
 
 -------------------

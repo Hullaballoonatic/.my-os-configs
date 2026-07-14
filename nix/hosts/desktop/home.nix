@@ -2,6 +2,8 @@
 
 {
 	imports = [
+		inputs.zen-browser.homeModules.default
+
 		../../home/linux.nix
 		../../home/modules/codex/home.nix
 		../../home/modules/gcc/home.nix
@@ -11,8 +13,9 @@
 		../../home/modules/noctalia/home.nix
 		../../home/modules/satty/home.nix
 		../../home/modules/vesktop/home.nix
+		../../home/modules/zen-browser/home.nix
 	];
-
+  
 	home.packages = with pkgs; [
 		# clipboard and screenshot utilities
     grim
@@ -23,9 +26,6 @@
     protonup-qt
     scrcpy # control android phone 
     keymapp # keyboard editing
-
-    # flakes
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 	];
 }
 

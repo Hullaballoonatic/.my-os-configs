@@ -124,13 +124,6 @@ enabled = true
 shortcut = "5"
 variant = "destructive"
 
-[theme]
-builtin = "Tokyo-Night"
-
-    [theme.templates]
-    builtin_ids = [ "ghostty", "hyprland", "starship" ]
-    community_ids = [ "zen-browser" ]
-
 [wallpaper]
 directory = "/home/casey/Pictures/Wallpapers"
 

@@ -182,6 +182,8 @@
     ethtool # i don't remember what this does
   ];
 
+  programs.dconf.enable = true; # GDK styling, e.g. Zen
+
   environment.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";

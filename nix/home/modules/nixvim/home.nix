@@ -16,18 +16,6 @@ in
 			xdg-utils
 		];
 
-		colorschemes.tokyonight = {
-			enable = true;
-
-			settings = {
-				transparent = true;
-				styles = {
-					sidebars = "transparent";
-					floats = "transparent";
-				};
-			};
-		};
-
 		# clipboard shared between os and nvim.
 		# might try scheduling for after ui enter to improve startup time?
 		clipboard = {
@@ -43,6 +31,13 @@ in
 			loaded_perl_provider = 0;
 			loaded_ruby_provider = 0;
 			loaded_python3_provider = 0;
+		};
+
+		highlightOverride = {
+			Normal.bg = "NONE";
+			NormalNC.bg = "NONE";
+			SignColumn.bg = "NONE";
+			EndOfBuffer.bg = "NONE";
 		};
 
 		opts = {
