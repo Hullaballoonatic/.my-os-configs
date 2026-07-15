@@ -15,6 +15,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
     stylix.url = "github:danth/stylix";
+    herdr.url = "github:ogulcancelik/herdr";
   };
 
   outputs = inputs@{ nixpkgs, self, stylix, ... }:

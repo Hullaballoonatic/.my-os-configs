@@ -155,5 +155,6 @@ upgrade() {
 case "$COMMAND" in
   build) build ;;
   update) update ;;
+  upgrade) upgrade ;;
   *) abort "Usage: $0 [build|update|upgrade]" ;;
 esac

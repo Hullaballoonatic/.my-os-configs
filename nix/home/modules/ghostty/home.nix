@@ -5,7 +5,7 @@
 		enable = true;
 
 		settings = {
-      command = "${pkgs.tmux}/bin/tmux new-session -A -s Default";
+      command = "${pkgs.herdr}/bin/herdr";
 
 			confirm-close-surface = false;
 
