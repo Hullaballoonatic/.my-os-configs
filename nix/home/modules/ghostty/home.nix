@@ -5,7 +5,7 @@
 		enable = true;
 
 		settings = {
-      command = "${pkgs.tmux}/bin/herdr";
+      command = "${pkgs.herdr}/bin/herdr";
 
 			confirm-close-surface = false;
 
