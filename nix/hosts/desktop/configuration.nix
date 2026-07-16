@@ -18,6 +18,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "pnpm-10.29.2"
+    "electron-40.10.5"
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

@@ -1,4 +1,19 @@
+[general]
+onboarding = false
+
+[theme]
+name = "Vicinae"
+
+[terminal]
+default_shell = "nu"
+
 [keys]
 prefix = "ctrl+space"
+
 split_vertical = "prefix+plus"
+
+focus_pane_left = "control+h"
+focus_pane_up = "control+j"
+focus_pane_down = "control+k"
+focus_pane_right = "control+l"
 

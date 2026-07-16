@@ -1,31 +1,32 @@
-{ inputs, pkgs, ... }:
-
 {
-	imports = [
-		inputs.zen-browser.homeModules.default
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    inputs.zen-browser.homeModules.default
 
-		../../home/linux.nix
-		../../home/modules/codex/home.nix
-		../../home/modules/gcc/home.nix
-		../../home/modules/hypr/home.nix
-		../../home/modules/hyprshot/home.nix
-		../../home/modules/kde-connect/home.nix
-		../../home/modules/noctalia/home.nix
-		../../home/modules/satty/home.nix
-		../../home/modules/vesktop/home.nix
-		../../home/modules/zen-browser/home.nix
-	];
-  
-	home.packages = with pkgs; [
-		# clipboard and screenshot utilities
+    ../../home/linux.nix
+    ../../home/modules/codex/home.nix
+    ../../home/modules/gcc/home.nix
+    ../../home/modules/hypr/home.nix
+    ../../home/modules/hyprshot/home.nix
+    ../../home/modules/kde-connect/home.nix
+    ../../home/modules/noctalia/home.nix
+    ../../home/modules/satty/home.nix
+    ../../home/modules/vesktop/home.nix
+    ../../home/modules/zen-browser/home.nix
+  ];
+
+  home.packages = with pkgs; [
+    # clipboard and screenshot utilities
     grim
     slurp
     wl-clipboard
-		
-		# gui apps
-    protonup-qt
-    scrcpy # control android phone 
-    keymapp # keyboard editing
-	];
-}
 
+    # gui apps
+    protonup-qt
+    scrcpy # control android phone
+    keymapp # keyboard editing
+  ];
+}
