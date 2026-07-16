@@ -18,7 +18,6 @@
 		./modules/sesh/home.nix
 		./modules/starship/home.nix
 		./modules/stylix/home.nix
-		./modules/tmux/home.nix
 		./modules/yazi/home.nix
 		./modules/zoxide/home.nix
 	];
