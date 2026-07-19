@@ -1,5 +1,9 @@
+{ inputs, ... }:
+
 {
 	imports = [
+		inputs.nixvim.homeModules.nixvim
+
 		./core.nix
 		./modules/nixvim/home.nix
 	];
