@@ -227,34 +227,28 @@ in {
 
       # flash to not conflict
       {
-        key = "s";
+        key = "gs";
         mode = ["n" "x" "o"];
         action = mkRaw "require('flash').jump";
         options.desc = "Flash";
       }
       {
-        key = "S";
+        key = "gS";
         mode = ["n" "x" "o"];
         action = mkRaw "require('flash').treesitter";
         options.desc = "Flash Treesitter";
       }
       {
-        key = "r";
+        key = "gr";
         mode = "o";
         action = mkRaw "require('flash').remote";
         options.desc = "Remote Flash";
       }
       {
-        key = "R";
+        key = "gR";
         mode = ["o" "x"];
         action = mkRaw "require('flash').treesitter_search";
         options.desc = "Treesitter Search";
-      }
-      {
-        key = "<c-s>";
-        mode = "c";
-        action = mkRaw "require('flash').toggle";
-        options.desc = "Toggle Flash Search";
       }
 
       # dap
@@ -302,8 +296,8 @@ in {
       flash.enable = true; # jump around
       gitsigns.enable = true;
       guess-indent.enable = true;
-      image.enable = true;
       indent-blankline.enable = true;
+      image.enable = true;
       nvim-autopairs.enable = true;
       todo-comments.enable = true;
       web-devicons.enable = true;
