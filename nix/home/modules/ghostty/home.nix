@@ -1,11 +1,19 @@
-{ pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
+  herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
 
 {
 	programs.ghostty = {
 		enable = true;
 
 		settings = {
-      command = "${pkgs.herdr}/bin/herdr";
+      command = "${herdrPkg}/bin/herdr";
+      env = "PATH=${config.home.homeDirectory}/.nix-profile/bin:/etc/profiles/per-user/${config.home.username}/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
 
 			confirm-close-surface = false;
 

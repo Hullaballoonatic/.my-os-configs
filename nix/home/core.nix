@@ -26,6 +26,7 @@
 		ncdu # disk usage viewer
 		sd # find & replace replacement
 		tree-sitter # dependency for cool stuff
+		home-manager
 
 		# LSPs
 		bash-language-server
@@ -39,4 +40,3 @@
 		yaml-language-server
 	];
 }
-

@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim.url = "github:nix-community/nixvim";
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
@@ -82,12 +87,7 @@
       };
       modules = [
         ./home/darwin.nix
-
-        {
-          home-manager.sharedModules = [
-            stylix.homeModules.stylix
-          ];
-        }
+        stylix.homeModules.stylix
       ];
     };
 
