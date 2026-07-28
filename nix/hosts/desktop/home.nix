@@ -5,10 +5,12 @@
 }: {
   imports = [
     inputs.zen-browser.homeModules.default
+		inputs.nixvim.homeModules.nixvim
 
     ../../home/linux.nix
     ../../home/modules/codex/home.nix
     ../../home/modules/gcc/home.nix
+    ../../home/modules/ghostty/home.nix
     ../../home/modules/hypr/home.nix
     ../../home/modules/hyprshot/home.nix
     ../../home/modules/kde-connect/home.nix
