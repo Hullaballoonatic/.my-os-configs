@@ -16,6 +16,7 @@
     ../../home/modules/kde-connect/home.nix
     ../../home/modules/nixvim/home.nix
     ../../home/modules/noctalia/home.nix
+    ../../home/modules/obsidian/home.nix
     ../../home/modules/satty/home.nix
     ../../home/modules/vesktop/home.nix
     ../../home/modules/zen-browser/home.nix

@@ -6,6 +6,7 @@
 
 		./core.nix
 		./modules/nixvim/home.nix
+		./modules/obsidian/home.nix
 	];
 
   home.username = "CaseyStratton";
