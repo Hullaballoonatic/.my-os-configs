@@ -1,11 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+add_newline = false
+
 format = """
 $fill
 $all
 """
-
-add_newline = false
 
 [fill]
 symbol = "─"
