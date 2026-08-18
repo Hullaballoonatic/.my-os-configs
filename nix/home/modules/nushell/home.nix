@@ -9,7 +9,7 @@
     '';
 
     extraEnv = ''
-      try { source-env ($env.HOME | path join ".secret_env.nu") }
+      try { source-env "~/.secrets.nu" }
     '';
 
     settings.show_banner = false;
