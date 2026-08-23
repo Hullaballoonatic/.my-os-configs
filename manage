@@ -107,15 +107,15 @@ nixos() {
 
   case "$LOCAL_HOST:$TARGET" in
     desktop:desktop)
-      sudo nixos-rebuild switch --flake "$flake"
+      nixos-rebuild switch --flake "$flake" --sudo
       ;;
 
     desktop:pi)
-      nixos-rebuild switch --flake "$flake" --target-host casey@pi.local --sudo 
+      nixos-rebuild switch --flake "$flake" --sudo --target-host casey@pi.local
       ;;
 
     pi:*)
-      sudo nixos-rebuild switch --flake "$flake" --build-host casey@desktop.local
+      nixos-rebuild switch --flake "$flake" --sudo --build-host casey@desktop.local
       ;;
 
     *)

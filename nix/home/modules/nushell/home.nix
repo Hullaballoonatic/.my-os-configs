@@ -9,7 +9,7 @@
     '';
 
     extraEnv = ''
-      try { source-env "~/.secrets.nu" }
+      source-env (if ("~/.secrets.nu" | path exists) { "~/.secrets.nu" } else { null }) 
     '';
 
     settings.show_banner = false;
