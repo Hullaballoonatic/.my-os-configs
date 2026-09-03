@@ -140,11 +140,6 @@
     openFirewall = true;
   };
 
-  services.udev.extraRules = ''
-    # CC2
-    SUBSYSTEM=="usb", ATTR{idVendor}=="303a", ATTR{idProduct}=="8253", MODE="0660", GROUP="users"
-  '';
-
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
@@ -162,7 +157,6 @@
       "video"
       "input"
       "dialout"
-      "tty"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGGzdglPRmtwQ0i7Jv1uA9V8N6fuIFHp3jcfLzkdCn5D pi"
