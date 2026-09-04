@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     nixvim.url = "github:nix-community/nixvim";
     codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
@@ -75,21 +77,61 @@
           }
         ];
       };
+
+    makeDarwinSystem = let
+      system = "aarch64-darwin";
+      hostname = "macbook";
+      username = "CaseyStratton";
+    in
+      inputs.nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs self hostname username;
+        };
+        modules = [
+          ./hosts/macbook/configuration.nix
+          inputs.home-manager.darwinModules.home-manager
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+
+          {
+            nix-homebrew = {
+              enable = true;
+              user = username;
+
+              # Adopt the Homebrew installation that already exists at
+              # /opt/homebrew instead of creating a second copy.
+              autoMigrate = true;
+
+              # Leave taps/formulae/casks that aren't declared below alone;
+              # we're migrating Homebrew usage into Nix incrementally.
+              mutableTaps = true;
+            };
+          }
+
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = {
+              inherit inputs hostname username;
+            };
+
+            home-manager.sharedModules = [
+              stylix.homeModules.stylix
+            ];
+
+            home-manager.users.${username} = {
+              imports = [
+                ./home/darwin.nix
+              ];
+            };
+          }
+        ];
+      };
   in {
     nixosConfigurations = lib.mapAttrs (hostname: _: makeSystem hostname) hosts;
 
-    homeConfigurations."CaseyStratton" = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsFor "aarch64-darwin";
-      extraSpecialArgs = {
-        inherit inputs;
-        username = "CaseyStratton";
-        hostname = "macbook";
-      };
-      modules = [
-        ./home/darwin.nix
-        stylix.homeModules.stylix
-      ];
-    };
+    darwinConfigurations.macbook = makeDarwinSystem;
 
     packages.aarch64-linux.home-pi-api = inputs.home-pi-api.packages.aarch64-linux.default;
 

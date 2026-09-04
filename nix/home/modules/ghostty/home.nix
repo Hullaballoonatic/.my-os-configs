@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   ...
@@ -12,8 +11,10 @@ in
 		enable = true;
 
 		settings = {
+      # herdr's `default_shell` is now set to an absolute Nix store path for
+      # `nu` (see ../herdr/home.nix), so herdr never needs to resolve `nu` by
+      # name via PATH, and this launcher no longer needs to set PATH at all.
       command = "${herdrPkg}/bin/herdr";
-      env = "PATH=${config.home.homeDirectory}/.nix-profile/bin:/etc/profiles/per-user/${config.home.username}/bin:/nix/var/nix/profiles/default/bin:/run/wrappers/bin:/run/current-system/sw/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
 
 			confirm-close-surface = false;
 
