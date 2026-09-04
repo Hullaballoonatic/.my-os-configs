@@ -7,7 +7,14 @@
     loginFile.source = ./login.nu;
 
     extraConfig = ''
-      alias manage = ^~/.my-os-configs/manage
+      # `manage` is retired; rebuild directly via nix-darwin/NixOS per host.
+      def rebuild [] {
+        if (sys host | get name) == "Darwin" {
+          sudo darwin-rebuild switch --flake ~/.my-os-configs/nix#macbook
+        } else {
+          nixos-rebuild switch --flake $"~/.my-os-configs/nix#(sys host | get hostname)" --sudo
+        }
+      }
     '';
 
     # nushell doesn't source the POSIX hm-session-vars.sh Home Manager

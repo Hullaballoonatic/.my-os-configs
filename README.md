@@ -1,18 +1,39 @@
-# Using manage
+# Applying configurations
 
-`manage` is a script for bootstrapping, applying, and updating the configurations
+This repo is applied directly via Nix/nix-darwin/Home Manager per host —
+there is no wrapper script.
 
-`manage` with no arguments performs `manage upgrade`
+## macOS (`macbook`)
 
-`manage upgrade`</br>
-  ├── performs update</br>
-  └── performs bootstrap
+```sh
+sudo darwin-rebuild switch --flake ~/.my-os-configs/nix#macbook
+```
 
-`manage update`</br>
-  └── nix flake update
+Update dependencies first with:
 
-`manage bootstrap`</br>
-  ├── install platform packages</br>
-  ├── install/update Nix</br>
-  ├── install Nix profile</br>
-  └── apply configurations
+```sh
+nix flake update --flake ~/.my-os-configs/nix
+```
+
+## NixOS (`desktop`)
+
+```sh
+nixos-rebuild switch --flake ~/.my-os-configs/nix#desktop --sudo
+```
+
+## NixOS (`pi`)
+
+Build/deploy from `desktop`:
+
+```sh
+nixos-rebuild switch --flake ~/.my-os-configs/nix#pi --sudo --target-host casey@pi.local
+```
+
+Or, from `pi` itself, using `desktop` as the build host:
+
+```sh
+nixos-rebuild switch --flake ~/.my-os-configs/nix#pi --sudo --build-host casey@desktop.local
+```
+
+Update dependencies first with `nix flake update --flake ~/.my-os-configs/nix`
+on either host.

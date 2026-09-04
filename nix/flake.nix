@@ -122,7 +122,7 @@
 
             home-manager.users.${username} = {
               imports = [
-                ./home/darwin.nix
+                ./hosts/macbook/home.nix
               ];
             };
           }
