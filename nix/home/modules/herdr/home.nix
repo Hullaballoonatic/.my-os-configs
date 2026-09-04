@@ -14,9 +14,9 @@ in
 	];
 
 	xdg.configFile."herdr/config.toml".source = tomlFormat.generate "herdr-config.toml" {
-		general.onboarding = false;
+		onboarding = false;
 
-		theme.name = "Vicinae";
+		theme.name = "catppuccin";
 
 		terminal = {
 			# An absolute Nix store path so herdr can find `nu` regardless of
@@ -29,6 +29,7 @@ in
 			prefix = "ctrl+space";
 
 			split_vertical = "prefix+plus";
+			split_horizontal = "prefix+minus";
 
 			focus_pane_left = "control+h";
 			focus_pane_up = "control+j";
