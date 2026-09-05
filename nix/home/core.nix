@@ -28,6 +28,10 @@
 		tree-sitter # dependency for cool stuff
 		home-manager
 
+		dust # disk usage analyzer
+		procs # modern `ps` replacement
+		tree # directory listing tool
+
 		# LSPs
 		bash-language-server
 		marksman

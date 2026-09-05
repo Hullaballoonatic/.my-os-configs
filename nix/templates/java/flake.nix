@@ -1,5 +1,5 @@
 {
-  description = "Web development shell";
+  description = "Java development shell";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -20,14 +20,15 @@
         in {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              nodejs_22
-              pnpm
-              nodePackages.typescript
-              typescript-language-server
-              nodePackages."@angular/cli"
+              jdk25
+              maven
+              jdt-language-server
+              lombok
+              google-java-format
             ];
+
+            JAVA_HOME = "${pkgs.jdk25}"; # some tools (e.g. IDE plugins, gradle) expect this set explicitly
           };
         });
     };
 }
-

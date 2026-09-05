@@ -138,6 +138,10 @@
     formatter = lib.mapAttrs (_: host: (pkgsFor host.system).alejandra) hosts;
 
     templates = {
+      java = {
+        path = ./templates/java;
+        description = "Java development environment";
+      };
       rust = {
         path = ./templates/rust;
         description = "Rust development environment";
