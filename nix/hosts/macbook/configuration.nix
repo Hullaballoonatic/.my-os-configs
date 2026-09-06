@@ -39,9 +39,6 @@
       # GitHub's own CLI, not a nixpkgs package (nixpkgs' unrelated
       # `copilot-cli`/`github-copilot-cli` attrs are EOL/unavailable).
       "copilot-cli"
-
-      # GUI app; not (yet) attempted via Nix.
-      "bruno"
     ];
 
     onActivation = {

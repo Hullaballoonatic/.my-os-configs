@@ -12,7 +12,9 @@
         | flatten
         | uniq
 
-      source-env (if ("~/.secrets.nu" | path exists) { "~/.secrets.nu" } else { null }) 
+      if ("~/.secrets.toml" | path exists) {
+        "~/.secrets.toml" | open | load-env
+      }
 
       def rebuild [] {
         let flake = "${config.home.homeDirectory}/.my-os-configs/nix"
@@ -22,6 +24,11 @@
         } else {
           nixos-rebuild switch --flake $"($flake)#(sys host | get hostname)" --sudo
         }
+      }
+
+      def upgrade [] {
+        nix flake update --flake "${config.home.homeDirectory}/.my-os-configs/nix"
+        rebuild
       }
     '';
 

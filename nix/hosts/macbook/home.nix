@@ -16,6 +16,7 @@
     maven # config lives untouched at ~/.m2/settings.xml, not managed here
     grafana-loki # provides `logcli`
     colima # docker-desktop replacement (VM state lives in ~/.colima, untouched)
+    bruno # API client GUI; migrated off the Homebrew cask, supports aarch64-darwin
 
     # gcloud manages its own components with `gcloud components
     # install/update`, which can't write into the read-only Nix store -
