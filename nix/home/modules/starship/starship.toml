@@ -1,12 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
-
-format = """
-$fill
-$all
-"""
-
 [fill]
 symbol = "─"
 style = "bright-black"
