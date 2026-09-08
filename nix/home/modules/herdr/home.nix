@@ -28,8 +28,8 @@ in
 		keys = {
 			prefix = "ctrl+space";
 
-			split_vertical = "prefix+plus";
-			split_horizontal = "prefix+minus";
+			split_vertical = "prefix+minus";
+			split_horizontal = "prefix+plus";
 
 			focus_pane_left = "control+h";
 			focus_pane_up = "control+j";
