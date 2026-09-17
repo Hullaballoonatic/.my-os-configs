@@ -8,7 +8,6 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
 
@@ -22,12 +21,10 @@
             packages = with pkgs; [
               nodejs_22
               pnpm
-              nodePackages.typescript
+              typescript
               typescript-language-server
-              nodePackages."@angular/cli"
             ];
           };
         });
     };
 }
-
