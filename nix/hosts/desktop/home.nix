@@ -19,6 +19,7 @@
     ../../home/modules/obsidian/home.nix
     ../../home/modules/satty/home.nix
     ../../home/modules/vesktop/home.nix
+    ../../home/modules/voxtype/home.nix
     ../../home/modules/zen-browser/home.nix
   ];
 

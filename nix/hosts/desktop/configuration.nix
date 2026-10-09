@@ -131,6 +131,29 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+
+    wireplumber.extraConfig."51-preferred-audio" = let
+      priorityRule = name: priority: {
+        matches = [{ "node.name" = name; }];
+        actions.update-props."priority.session" = priority;
+      };
+    in {
+      "wireplumber.settings" = {
+        "node.restore-default-targets" = false;
+        "bluetooth.autoswitch-to-headset-profile" = false;
+        "bluetooth.use-persistent-storage" = false;
+        "bluetooth.profile-preference" = "quality";
+      };
+
+      "monitor.alsa.rules" = [
+        (priorityRule "alsa_output.pci-0000_0f_00.1.hdmi-stereo" 3000)
+        (priorityRule "alsa_input.usb-0c76_USB_PnP_Audio_Device-00.mono-fallback" 3000)
+      ];
+
+      "monitor.bluez.rules" = [
+        (priorityRule "~bluez_output.70_F9_4A_93_F2_28.*" 3500)
+      ];
+    };
   };
 
   services.sunshine = {

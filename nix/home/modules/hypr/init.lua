@@ -282,6 +282,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + return", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd(programs.browser))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("voxtype record toggle"))
 
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
