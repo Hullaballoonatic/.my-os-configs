@@ -99,6 +99,9 @@ in {
       osd.enabled = false;
 
       text.spoken_punctuation = true;
+      text.replacements = {
+        # "mistake" = "fix"
+      };
     };
   };
 

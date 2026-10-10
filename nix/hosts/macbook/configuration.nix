@@ -38,7 +38,11 @@
 
       # GitHub's own CLI, not a nixpkgs package (nixpkgs' unrelated
       # `copilot-cli`/`github-copilot-cli` attrs are EOL/unavailable).
-      "copilot-cli"
+      {
+        name = "copilot-cli";
+        # Upgrade during activation even though this cask supports self-updates.
+        greedy = true;
+      }
     ];
 
     onActivation = {
@@ -47,8 +51,8 @@
       # on the next switch (this is what will finally remove gcloud-cli
       # now that it's dropped above).
       cleanup = "uninstall";
-      autoUpdate = false;
-      upgrade = false;
+      autoUpdate = true;
+      upgrade = true;
     };
   };
 

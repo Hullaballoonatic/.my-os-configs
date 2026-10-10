@@ -207,7 +207,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    BROWSER = "zen-browser";
+    BROWSER = "zen-beta";
     TERMINAL = "ghostty";
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = "1";

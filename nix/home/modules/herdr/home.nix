@@ -28,13 +28,14 @@ in
 		keys = {
 			prefix = "ctrl+space";
 
-			split_vertical = "prefix+minus";
-			split_horizontal = "prefix+plus";
+			split_horizontal = "prefix+h";
 
-			focus_pane_left = "control+h";
-			focus_pane_up = "control+j";
-			focus_pane_down = "control+k";
-			focus_pane_right = "control+l";
+			new_tab = "control+t";
+
+			focus_pane_left = "control+left";
+			focus_pane_up = "control+up";
+			focus_pane_down = "control+down";
+			focus_pane_right = "control+right";
 		};
 	};
 }

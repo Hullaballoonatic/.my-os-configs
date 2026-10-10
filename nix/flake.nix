@@ -17,7 +17,6 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nixvim.url = "github:nix-community/nixvim";
-    codex-nix.url = "github:SecBear/codex-nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-pi-api.url = "github:Hullaballoonatic/home-pi-api";
