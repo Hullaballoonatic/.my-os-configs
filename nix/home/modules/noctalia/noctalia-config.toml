@@ -46,6 +46,20 @@ hidden_tabs = [ "monitor", "power" ]
 [location]
 auto_locate = true
 
+[notification]
+filter_order = ["voxtype"]
+
+    [notification.filter.voxtype]
+    enabled = true
+    match = "Voxtype"
+    show_toast = false
+    play_sound = false
+    save_history = false
+
+[osd.kinds]
+privacy = false
+keyboard_layout = false
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
