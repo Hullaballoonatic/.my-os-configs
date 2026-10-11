@@ -1,6 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
+  programs.direnv = {
+    enable = true;
+    enableNushellIntegration = true;
+    enableGitIntegration = true;
+    nix-direnv.enable = true;
+    silent = true;
+  };
+
   programs.nushell = {
     enable = true;
 

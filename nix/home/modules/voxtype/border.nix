@@ -58,6 +58,6 @@ in {
       RestartSec = 1;
     };
 
-    Install.WantedBy = ["hyprland-session.target"];
+    Install.WantedBy = ["hyprland-session.target" "voxtype.service"];
   };
 }

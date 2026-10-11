@@ -27,6 +27,7 @@
         # "mistake" = "fix";
         "hyper land" = "hyprland";
         "hyperland" = "hyprland";
+        "ghost key" = "ghostty";
       };
     };
   };
