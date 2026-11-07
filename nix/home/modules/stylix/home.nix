@@ -5,6 +5,9 @@
     enable = true;
     polarity = "dark";
 
+    # resolves a clash between home manager useGlobalPkgs
+    overlays.enable = false;
+
     base16Scheme = {
       scheme = "Vicinae";
       author = "Vicinae HQ; Base16 adaptation by Casey";

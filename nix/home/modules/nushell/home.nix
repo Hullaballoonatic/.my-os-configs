@@ -14,6 +14,8 @@
 
     loginFile.source = ./login.nu;
 
+    loadSessionVariables = true;
+
     environmentVariables =
       lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin (
         lib.filterAttrs
