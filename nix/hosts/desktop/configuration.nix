@@ -119,6 +119,9 @@
     ];
   };
 
+  # for logitech mouse support
+  services.ratbagd.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -194,6 +197,15 @@
   environment.systemPackages = with pkgs; [
     # bubblewrap # wanted by codex # commented to see if home manager provides it
     ethtool # i don't remember what this does
+
+    # for running wow forever
+    lutris
+    umu-launcher # required by lutris to use proton
+    wineWow64Packages.staging
+    winetricks
+
+    # mouse config gui
+    piper
   ];
 
   programs.dconf.enable = true; # GDK styling, e.g. Zen

@@ -1,10 +1,8 @@
-{ pkgs, ... }:
 {
   imports = [./border.nix];
 
   services.voxtype = {
     enable = true;
-    package = pkgs.voxtype-vulkan;
 
     loadModels = ["base.en"];
 
